@@ -6,30 +6,7 @@ pgrep: find processes by name
 pkill: signal processes by name
 
 
-
-
-The purpose of the fork function is to create a new process.
-Typically what you want to do is to start some program running.
-
-To make use of the system’s checker you would have your program “fork” a process,
-which runs the system’s spell checker. This is exactly the mechanism used by the shell
-program you use every day. When you type ‘ls’, a process running the ‘ls’ program is
-forked – that new process displays its output on the screen and then terminates.
-
-
-the first if statement, perhaps. This is how the fork function is always called, and
-when it completes executing, it returns an integer value. Now what is unique about
-the fork function is that when it is called it creates a new process. But not just any process.
-
-The process created is an exact copy of the process calling fork – this means that the
-entire environment of the calling process is duplicated including run-time stack, CPU registers, etc.
-
+Fork creates new processes, a process that is created is an exact copy of the process calling fork
 So before the fork is executed, there is just the one process and when the fork returns
 there are two – and both are executing at the same point in the code.
-
-Well, there is one piece of information you do not have yet. The copy is not exactly the same. When
-fork returns in the original process (the parent) the return value is some positive integer, which is
-the Process ID of the other process (the child). On the other hand, when the fork in the child returns,
-it returns the integer value 0 (zero)!
-
-So in the parent process the value of pid is some positive integer and in the child its value is zero.
+For the parent process the value of pid is some positive integer and in the child its value is zero.
